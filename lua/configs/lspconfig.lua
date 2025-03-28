@@ -1,11 +1,9 @@
--- load defaults i.e lua_lsp
-require("nvchad.configs.lspconfig").defaults()
-
+local nvlsp = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
 
--- EXAMPLE
-local servers = { "html", "cssls" }
-local nvlsp = require "nvchad.configs.lspconfig"
+nvlsp.defaults() -- loads nvchad's defaults
+
+local servers = { "html", "cssls", "clangd" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -16,9 +14,9 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
+-- Without the loop, you would have to manually set up each LSP 
+-- 
+-- lspconfig.html.setup {
 --   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
