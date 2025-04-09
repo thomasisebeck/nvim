@@ -12,7 +12,11 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    opts = {},
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
