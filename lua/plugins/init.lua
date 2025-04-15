@@ -17,13 +17,27 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        javascript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescript = { "eslint" },
+        typescriptreact = { "eslint" },
+      },
+    },
+  },
 }
