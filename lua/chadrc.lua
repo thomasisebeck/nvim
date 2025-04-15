@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "obsidian-ember",
+	theme = "jabuti",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
