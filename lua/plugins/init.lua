@@ -34,4 +34,13 @@ return {
       require "configs.none-ls"
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+  },
 }
