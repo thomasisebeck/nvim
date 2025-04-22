@@ -24,6 +24,9 @@ return {
         "vimdoc",
         "html",
         "css",
+        "javascript",
+        "typescript",
+        "tsx",
       },
     },
   },
@@ -42,5 +45,8 @@ return {
       "typescript",
       "typescriptreact",
     },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   },
 }
