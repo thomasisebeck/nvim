@@ -1,3 +1,11 @@
-# NVIM config 
+# NVIM config
 
-Basically just added support for c++ using mason
+- Support for C, C++, TS, JS, and tailwind
+
+# Comments
+
+- TODO
+- BUG
+- NOTE
+- TEST, PASSED, FAILED
+- WARN

@@ -10,3 +10,6 @@ map("n", "<leader>p", ":bp<CR>", { desc = "Go to the previous buffer" })
 map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+-- PASS
+
+-- FAILED:

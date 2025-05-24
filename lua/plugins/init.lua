@@ -1,8 +1,17 @@
 return {
   {
+    "rhysd/conflict-marker.vim",
+  },
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    lazy = false,
+    opts = {
+      keywords = {
+        TEST = { icon = "⏲ ", color = "test", alt = { "TESTING" } },
+        PASS = { icon = "✅", color = "green", alt = { "PASSED" } },
+      },
+    },
   },
   {
     "stevearc/conform.nvim",

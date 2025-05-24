@@ -15,6 +15,7 @@ return {
     rtp = {
       disabled_plugins = {
         "2html_plugin",
+        "spellfile_plugin",
         "tohtml",
         "getscript",
         "getscriptPlugin",
@@ -28,7 +29,6 @@ return {
         "tar",
         "tarPlugin",
         "rrhelper",
-        "spellfile_plugin",
         "vimball",
         "vimballPlugin",
         "zip",
