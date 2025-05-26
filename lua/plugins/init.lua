@@ -1,6 +1,14 @@
 return {
   {
     "rhysd/conflict-marker.vim",
+    lazy = false,
+    config = function()
+      vim.api.nvim_set_hl(0, "ConflictMarkerBegin", { bg = "#3f7366" })
+      vim.api.nvim_set_hl(0, "ConflictMarkerOurs", { bg = "#2e5049" })
+      vim.api.nvim_set_hl(0, "ConflictMarkerTheirs", { bg = "#344f69" })
+      vim.api.nvim_set_hl(0, "ConflictMarkerEnd", { bg = "#2f628e" })
+      vim.api.nvim_set_hl(0, "ConflictMarkerCommonAncestorsHunk", { bg = "#7548a1" })
+    end,
   },
   {
     "folke/todo-comments.nvim",
