@@ -8,8 +8,10 @@ return {
     lazy = false,
     opts = {
       keywords = {
-        TEST = { icon = "⏲ ", color = "test", alt = { "TESTING" } },
-        PASS = { icon = "✅", color = "green", alt = { "PASSED" } },
+        TEST = { icon = "⏲ ", color = "#b392e9", alt = { "TESTING" } },
+        PASS = { icon = "✅", color = "#56d364", alt = { "PASSED" } },
+        FAIL = { icon = "❎", color = "#ff7f8d" },
+        TODO = { color = "#ffdf5d" },
       },
     },
   },
