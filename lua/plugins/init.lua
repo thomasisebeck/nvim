@@ -1,14 +1,36 @@
 return {
   {
-    "rhysd/conflict-marker.vim",
-    lazy = false,
+    "tronikelis/conflict-marker.nvim",
     config = function()
-      vim.api.nvim_set_hl(0, "ConflictMarkerBegin", { bg = "#3f7366" })
-      vim.api.nvim_set_hl(0, "ConflictMarkerOurs", { bg = "#2e5049" })
-      vim.api.nvim_set_hl(0, "ConflictMarkerTheirs", { bg = "#344f69" })
-      vim.api.nvim_set_hl(0, "ConflictMarkerEnd", { bg = "#2f628e" })
-      vim.api.nvim_set_hl(0, "ConflictMarkerCommonAncestorsHunk", { bg = "#7548a1" })
+      require("conflict-marker").setup {
+        highlights = true,
+        on_attach = function(conflict)
+          local MID = "^=======$"
+
+          vim.keymap.set("n", "[x", function()
+            vim.cmd("?" .. MID)
+          end, { buffer = conflict.bufnr })
+
+          vim.keymap.set("n", "]x", function()
+            vim.cmd("/" .. MID)
+          end, { buffer = conflict.bufnr })
+
+          vim.keymap.set("n", "co", function()
+            conflict:choose_ours()
+          end)
+          vim.keymap.set("n", "ct", function()
+            conflict:choose_theirs()
+          end)
+          vim.keymap.set("n", "cb", function()
+            conflict:choose_both()
+          end)
+          vim.keymap.set("n", "cn", function()
+            conflict:choose_none()
+          end)
+        end,
+      }
     end,
+    lazy = false,
   },
   {
     "folke/todo-comments.nvim",

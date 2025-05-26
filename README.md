@@ -10,4 +10,13 @@
 - TEST, PASSED, FAILED
 - WARN
 
-Confict me
+# Extra keybindings
+
+## Conflict chooser
+
+co - conflict ours
+ct - cotflict theirs
+cb - conflict both
+cn - conflict none
+[x - next conflict
+]x - prev conflict
