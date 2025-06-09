@@ -1,5 +1,5 @@
 return {
-  ------ flutter and dart -----
+  -- flutter stuff
   {
     "akinsho/flutter-tools.nvim",
     dependencies = {
@@ -23,9 +23,7 @@ return {
             require("dap").configurations.dart = {
               {
                 type = "dart",
-
                 request = "launch",
-
                 name = "Launch flutter",
                 dartSdkPath = "home/flutter/bin/cache/dart-sdk/",
                 flutterSdkPath = "home/flutter",
@@ -35,15 +33,12 @@ return {
             }
           end,
         },
-
         dev_log = {
-
           -- toggle it when you run without DAP
           enabled = false,
           open_cmd = "tabedit",
         },
         lsp = {
-
           on_attach = require("lvim.lsp").common_on_attach,
           capabilities = require("lvim.lsp").default_capabilities,
         },
