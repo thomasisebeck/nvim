@@ -148,6 +148,10 @@ return {
     end,
   },
   {
+    "Civitasv/cmake-tools.nvim",
+    opts = {},
+  },
+  {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
     opts = {},
