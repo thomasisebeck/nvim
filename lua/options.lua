@@ -4,6 +4,9 @@ local o = vim.opt
 
 o.clipboard = "unnamed,unnamedplus"
 
+-- remove me!
+vim.deprecate = function() end
+
 local cmp = require "cmp"
 -- hi
 
