@@ -11,6 +11,22 @@ return {
 
     opts = {}, -- your configuration
   },
+  {
+    "aserowy/tmux.nvim",
+    config = function()
+      require("tmux").setup {
+        -- your tmux.nvim settings here (optional)
+      }
+
+      -- Keybindings for resizing tmux panes
+      -- Use control and arrows
+      vim.keymap.set("n", "<C-h>", [[<cmd>lua require("tmux").resize_left()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-j>", [[<cmd>lua require("tmux").resize_bottom()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-k>", [[<cmd>lua require("tmux").resize_top()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-l>", [[<cmd>lua require("tmux").resize_right()<CR>]], { silent = true })
+    end,
+  },
+
   -- flutter stuff
   {
     "akinsho/flutter-tools.nvim",
