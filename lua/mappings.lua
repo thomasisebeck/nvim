@@ -1,18 +1,68 @@
 require "nvchad.mappings"
-
--- add yours here
+require "configs.diagnostics"
 
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>n", ":bn<CR>", { desc = "Go to the next buffer" })
 map("n", "<leader>p", ":bp<CR>", { desc = "Go to the previous buffer" })
--- map("n", "<leader>tc", ":TodoTelescope<CR>", { desc = "See all TODOs" })
 
 local wk = require "which-key"
 wk.add {
   { "<leader>tc", { icon = "" } },
 }
+
+wk.add {
+  { "<leader>d", group = "Diagnostics / Workspaces" },
+  { "<leader>dd", icon = "" },
+  { "<leader>da", icon = "" },
+  { "<leader>dr", icon = "" },
+  { "<leader>dl", icon = "" },
+}
+
+map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", {
+  desc = "Open diagnostics",
+  silent = true,
+})
+
+map("n", "<leader>da", function()
+  local cwd = vim.fn.getcwd()
+  vim.lsp.buf.add_workspace_folder(cwd)
+  vim.notify("Added workspace folder: " .. cwd, vim.log.levels.INFO)
+end, { desc = "Add diagnostics folder" })
+
+map("n", "<leader>dc", function()
+  local folders = vim.lsp.buf.list_workspace_folders()
+  if #folders == 0 then
+    vim.notify("No workspace folders to clear.", vim.log.levels.INFO)
+    return
+  end
+  for _, folder in ipairs(folders) do
+    vim.lsp.buf.remove_workspace_folder(folder)
+  end
+  vim.notify("Cleared all workspace folders.", vim.log.levels.WARN)
+end, { desc = "Diagnostics clear folders" })
+
+map("n", "<leader>dl", function()
+  -- 1. Get the list of workspace folders (which may contain duplicates)
+  local folders = vim.lsp.buf.list_workspace_folders() or {}
+
+  -- 2. Create a new table to store unique folders
+  local unique_folders = {}
+  local seen = {} -- A set (table used as a set) to track unique paths
+
+  for _, folder in ipairs(folders) do
+    -- Check if we've already seen this folder path
+    if not seen[folder] then
+      -- If it's new, add it to our unique list and mark it as seen
+      table.insert(unique_folders, folder)
+      seen[folder] = true
+    end
+  end
+
+  -- 3. Print the de-duplicated list
+  print(vim.inspect(unique_folders))
+end, { desc = "List diagnostics folders" })
 
 -- TEST: this function
 -- TODO: learn tags
