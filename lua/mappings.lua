@@ -1,5 +1,4 @@
 require "nvchad.mappings"
-require "configs.diagnostics"
 
 local map = vim.keymap.set
 
@@ -25,12 +24,6 @@ map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", {
   silent = true,
 })
 
-map("n", "<leader>da", function()
-  local cwd = vim.fn.getcwd()
-  vim.lsp.buf.add_workspace_folder(cwd)
-  vim.notify("Added workspace folder: " .. cwd, vim.log.levels.INFO)
-end, { desc = "Add diagnostics folder" })
-
 map("n", "<leader>dc", function()
   local folders = vim.lsp.buf.list_workspace_folders()
   if #folders == 0 then
@@ -42,6 +35,26 @@ map("n", "<leader>dc", function()
   end
   vim.notify("Cleared all workspace folders.", vim.log.levels.WARN)
 end, { desc = "Diagnostics clear folders" })
+
+-- Add current folder to workspace (safely)
+map("n", "<leader>da", function()
+  local cwd = vim.fn.getcwd()
+  local folders = vim.lsp.buf.list_workspace_folders()
+
+  -- normalize cwd (resolve symbolic links, remove trailing slash)
+  cwd = vim.loop.fs_realpath(cwd) or cwd
+
+  -- prevent duplicates
+  for _, f in ipairs(folders) do
+    if vim.loop.fs_realpath(f) == cwd then
+      vim.notify("Workspace folder already added: " .. cwd, vim.log.levels.INFO)
+      return
+    end
+  end
+
+  vim.lsp.buf.add_workspace_folder(cwd)
+  vim.notify("Added workspace folder: " .. cwd, vim.log.levels.INFO)
+end, { desc = "Add current folder to workspace" })
 
 map("n", "<leader>dl", function()
   -- 1. Get the list of workspace folders (which may contain duplicates)
