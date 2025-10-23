@@ -12,14 +12,21 @@ wk.add {
 }
 
 wk.add {
-  { "<leader>d", group = "Diagnostics / Workspaces" },
-  { "<leader>dd", icon = "" },
+  { "<leader>d", group = "Diagnostics" },
+  { "<leader>dr", icon = "⟲" },
+  { "<leader>dd", icon = "🪲" },
   { "<leader>da", icon = "" },
-  { "<leader>dr", icon = "" },
   { "<leader>dl", icon = "" },
+  { "<leader>dc", icon = "␥" },
 }
 
-map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", {
+local diagnostics = require "configs.trigger_diagnostics"
+
+map("n", "<leader>dr", diagnostics.trigger_workspace_diagnostics, {
+  desc = "Refresh workspace diagnostics",
+  silent = true,
+})
+map("n", "<leader>dd", "<cmd>Get diagnostics<CR>", {
   desc = "Open diagnostics",
   silent = true,
 })
@@ -33,8 +40,8 @@ map("n", "<leader>dc", function()
   for _, folder in ipairs(folders) do
     vim.lsp.buf.remove_workspace_folder(folder)
   end
-  vim.notify("Cleared all workspace folders.", vim.log.levels.WARN)
-end, { desc = "Diagnostics clear folders" })
+  vim.notify("Cleared all workspace folders.", vim.log.levels.INFO)
+end, { desc = "Clear workspaces" })
 
 -- Add current folder to workspace (safely)
 map("n", "<leader>da", function()
