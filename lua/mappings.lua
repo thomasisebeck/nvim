@@ -14,7 +14,7 @@ wk.add {
 wk.add {
   { "<leader>d", group = "Diagnostics" },
   { "<leader>dr", icon = "⟲" },
-  { "<leader>dd", icon = "🪲" },
+  { "<leader>dd", icon = "🐞" },
   { "<leader>da", icon = "" },
   { "<leader>dl", icon = "" },
   { "<leader>dc", icon = "␥" },
