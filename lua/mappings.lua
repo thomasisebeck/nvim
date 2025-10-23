@@ -26,7 +26,7 @@ map("n", "<leader>dr", diagnostics.trigger_workspace_diagnostics, {
   desc = "Refresh workspace diagnostics",
   silent = true,
 })
-map("n", "<leader>dd", "<cmd>Get diagnostics<CR>", {
+map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", {
   desc = "Open diagnostics",
   silent = true,
 })
