@@ -5,7 +5,7 @@ return {
     cmd = "Trouble",
     keys = {
       {
-        "<leader>dt",
+        "<leader>dd",
         "<cmd>Trouble diagnostics toggle<cr>",
         desc = "Diagnostics (Trouble)",
       },
@@ -21,11 +21,6 @@ return {
       },
       {
         "<leader>dl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>ds",
         "<cmd>Trouble loclist toggle<cr>",
         desc = "Location List (Trouble)",
       },
@@ -36,7 +31,7 @@ return {
       },
     },
   },
-    {
+  {
     "tronikelis/conflict-marker.nvim",
     config = function()
       require("conflict-marker").setup {
@@ -72,7 +67,7 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-   lazy = false,
+    lazy = false,
     opts = {
       keywords = {
         TEST = { icon = "⏲ ", color = "#b392e9", alt = { "TESTING" } },

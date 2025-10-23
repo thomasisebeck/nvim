@@ -1,11 +1,6 @@
 require "nvchad.options"
 
-local o = vim.opt
-
-o.clipboard = "unnamed,unnamedplus"
-
 local cmp = require "cmp"
--- hi
 
 cmp.setup {
   sources = cmp.config.sources {
