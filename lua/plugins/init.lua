@@ -1,5 +1,87 @@
 return {
   {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional
+    },
+
+    opts = {}, -- your configuration
+  },
+  {
+    "aserowy/tmux.nvim",
+    config = function()
+      require("tmux").setup {
+        -- your tmux.nvim settings here (optional)
+      }
+
+      -- Keybindings for resizing tmux panes
+      -- Use control and arrows
+      vim.keymap.set("n", "<C-h>", [[<cmd>lua require("tmux").resize_left()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-j>", [[<cmd>lua require("tmux").resize_bottom()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-k>", [[<cmd>lua require("tmux").resize_top()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-l>", [[<cmd>lua require("tmux").resize_right()<CR>]], { silent = true })
+    end,
+  },
+
+  -- flutter stuff
+  {
+    "akinsho/flutter-tools.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim",
+    },
+    config = function()
+      require("flutter-tools").setup {
+
+        debugger = {
+          -- make these two params true to enable debug mode
+          enabled = false,
+          run_via_dap = false,
+          register_configurations = function(_)
+            require("dap").adapters.dart = {
+              type = "executable",
+              command = vim.fn.stdpath "data" .. "/mason/bin/dart-debug-adapter",
+              args = { "flutter" },
+            }
+
+            require("dap").configurations.dart = {
+              {
+                type = "dart",
+                request = "launch",
+                name = "Launch flutter",
+                dartSdkPath = "home/flutter/bin/cache/dart-sdk/",
+                flutterSdkPath = "home/flutter",
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+              },
+            }
+          end,
+        },
+        dev_log = {
+          -- toggle it when you run without DAP
+          enabled = false,
+          open_cmd = "tabedit",
+        },
+        lsp = {
+          on_attach = require("lvim.lsp").common_on_attach,
+          capabilities = require("lvim.lsp").default_capabilities,
+        },
+      }
+    end,
+  },
+
+  {
+    "dart-lang/dart-vim-plugin",
+  },
+
+  ----------
+
+  { "mfussenegger/nvim-dap" },
+  {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
@@ -87,6 +169,11 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
+  },
+  {
+    "Civitasv/cmake-tools.nvim",
+    ft = "cmake",
+    opts = {},
   },
   {
     "ray-x/lsp_signature.nvim",
