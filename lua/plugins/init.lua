@@ -1,5 +1,10 @@
 return {
   {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,
+  },
+  {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
     build = ":UpdateRemotePlugins",
@@ -161,6 +166,7 @@ return {
         "typescript",
         "tsx",
         "python",
+        "zig",
       },
     },
   },
