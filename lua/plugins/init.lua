@@ -1,4 +1,37 @@
 return {
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional
+    },
+
+    opts = {}, -- your configuration
+  },
+  {
+    "aserowy/tmux.nvim",
+    config = function()
+      require("tmux").setup {
+        -- your tmux.nvim settings here (optional)
+      }
+
+      -- Keybindings for resizing tmux panes
+      -- Use control and arrows
+      vim.keymap.set("n", "<C-h>", [[<cmd>lua require("tmux").resize_left()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-j>", [[<cmd>lua require("tmux").resize_bottom()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-k>", [[<cmd>lua require("tmux").resize_top()<CR>]], { silent = true })
+      vim.keymap.set("n", "<C-l>", [[<cmd>lua require("tmux").resize_right()<CR>]], { silent = true })
+    end,
+  },
+
   -- flutter stuff
   {
     "akinsho/flutter-tools.nvim",
@@ -49,47 +82,7 @@ return {
   {
     "dart-lang/dart-vim-plugin",
   },
-
-  ----------
-
   { "mfussenegger/nvim-dap" },
-  {
-    "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = "Trouble",
-    keys = {
-      {
-        "<leader>dt",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>db",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>ds",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>dl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>ds",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>dq",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
-  },
   {
     "tronikelis/conflict-marker.nvim",
     config = function()
@@ -124,6 +117,9 @@ return {
     lazy = false,
   },
   {
+    "artemave/workspace-diagnostics.nvim",
+  },
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
@@ -148,6 +144,11 @@ return {
     end,
   },
   {
+    "Civitasv/cmake-tools.nvim",
+    ft = "cmake",
+    opts = {},
+  },
+  {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
     opts = {},
@@ -165,6 +166,7 @@ return {
         "typescript",
         "tsx",
         "python",
+        "zig",
       },
     },
   },
@@ -174,6 +176,11 @@ return {
     opts = function()
       require "configs.none-ls"
     end,
+  },
+  {
+    "prettier/vim-prettier",
+    run = "yarn install --frozen-lockfile --production",
+    ft = { "javascript", "typescript", "css", "scss", "json", "graphql", "markdown", "vue", "yaml", "html" },
   },
   {
     "windwp/nvim-ts-autotag",

@@ -6,3 +6,4 @@ require "lspconfig"
 local servers = { "clangd", "ts_ls", "tailwindcss", "eslint", "lua_ls", "pyright", "cssls" }
 
 vim.lsp.enable(servers)
+
