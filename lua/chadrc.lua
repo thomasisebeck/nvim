@@ -1,17 +1,23 @@
--- This file needs to have same structure as nvconfig.lua 
+-- This file needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
--- Please read that file to know all available options :( 
+-- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
+
+-- for "rachartier/tiny-inline-diagnostic.nvim", disable the default diagostics
+vim.diagnostic.config {
+  virtual_text = false,
+}
+
 local M = {}
 
 M.base46 = {
-	theme = "github_dark",
+  theme = "github_dark",
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  -- hl_override = {
+  -- 	Comment = { italic = true },
+  -- 	["@comment"] = { italic = true },
+  -- },
 }
 
 -- M.nvdash = { load_on_startup = true }
