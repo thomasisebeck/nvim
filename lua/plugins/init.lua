@@ -1,48 +1,13 @@
 return {
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    priority = 1000,
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    opts = require "configs.conform",
+  },
+  {
+    "neovim/nvim-lspconfig",
     config = function()
-      require("tiny-inline-diagnostic").setup {
-        options = {
-          multilines = {
-            enabled = true,
-          },
-        },
-      }
-    end,
-  },
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^6",
-    lazy = false,
-  },
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    build = ":UpdateRemotePlugins",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig", -- optional
-    },
-
-    opts = {}, -- your configuration
-  },
-  {
-    "aserowy/tmux.nvim",
-    config = function()
-      require("tmux").setup {
-        -- your tmux.nvim settings here (optional)
-      }
-
-      -- Keybindings for resizing tmux panes
-      -- Use control and arrows
-      vim.keymap.set("n", "<C-h>", [[<cmd>lua require("tmux").resize_left()<CR>]], { silent = true })
-      vim.keymap.set("n", "<C-j>", [[<cmd>lua require("tmux").resize_bottom()<CR>]], { silent = true })
-      vim.keymap.set("n", "<C-k>", [[<cmd>lua require("tmux").resize_top()<CR>]], { silent = true })
-      vim.keymap.set("n", "<C-l>", [[<cmd>lua require("tmux").resize_right()<CR>]], { silent = true })
+      require "configs.lspconfig"
     end,
   },
 
@@ -92,11 +57,9 @@ return {
       }
     end,
   },
-
   {
     "dart-lang/dart-vim-plugin",
   },
-  { "mfussenegger/nvim-dap" },
   {
     "tronikelis/conflict-marker.nvim",
     config = function()
@@ -147,17 +110,6 @@ return {
     },
   },
   {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    opts = require "configs.conform",
-  },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-  {
     "Civitasv/cmake-tools.nvim",
     ft = "cmake",
     opts = {},
@@ -173,14 +125,12 @@ return {
       ensure_installed = {
         "vim",
         "lua",
-        "vimdoc",
         "html",
         "css",
         "javascript",
         "typescript",
         "tsx",
         "python",
-        "zig",
       },
     },
   },
@@ -199,9 +149,7 @@ return {
   {
     "windwp/nvim-ts-autotag",
     ft = {
-      "javascript",
       "javascriptreact",
-      "typescript",
       "typescriptreact",
     },
     config = function()

@@ -4,11 +4,6 @@
 
 ---@type ChadrcConfig
 
--- for "rachartier/tiny-inline-diagnostic.nvim", disable the default diagostics
-vim.diagnostic.config {
-  virtual_text = false,
-}
-
 local M = {}
 
 M.base46 = {
