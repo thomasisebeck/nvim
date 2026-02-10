@@ -22,19 +22,22 @@ cn - conflict none
 [x - next conflict
 ]x - prev conflict
 
-# Flutter installation
+# Clangtidy checks
+
+To enable clangtidy globally, add this to ~/.clangd
 
 ```
-sudo apt-get update -y && sudo apt-get upgrade -y;
-sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
-```
+CompileFlags:
+  Add: [-std=c++20]
 
-```
-sudo apt-get install libc6:amd64 libstdc++6:amd64 lib32z1 libbz2-1.0:amd64
-```
-
-Then install android studio:
-
-```
-https://developer.android.com/studio/install#linux
+Diagnostics:
+  ClangTidy:
+    Add:
+      - clang-analyzer-*
+      - bugprone-*
+      - modernize-*
+      - performance-*
+      - readability-*
+      - cppcoreguidelines-*
+      - misc-*
 ```
