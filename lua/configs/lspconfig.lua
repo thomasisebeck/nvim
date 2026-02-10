@@ -1,9 +1,23 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-require "lspconfig"
+local servers = {
+  vtsls = {},
+  tailwindcss = {},
+  eslint = {},
+  lua_ls = {},
+  pyright = {},
+  cssls = {},
+  clangd = {
+    cmd = {
+      "clangd",
+      "--clang-tidy",
+      "--completion-style=detailed",
+      "--header-insertion=never",
+    },
+  },
+}
 
-local servers = { "clangd", "ts_ls", "tailwindcss", "eslint", "lua_ls", "pyright", "cssls" }
-
-vim.lsp.enable(servers)
-
+for name, opts in pairs(servers) do
+  vim.lsp.config(name, opts)
+  vim.lsp.enable(name)
+end
