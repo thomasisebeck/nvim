@@ -10,6 +10,20 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+    "mfussenegger/nvim-dap",
+    event = "VeryLazy",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "theHamsta/nvim-dap-virtual-text",
+      "jay-babu/mason-nvim-dap.nvim",
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require "configs.dap-ui"
+    end,
+  },
 
   -- flutter stuff
   {
@@ -19,42 +33,7 @@ return {
       "stevearc/dressing.nvim",
     },
     config = function()
-      require("flutter-tools").setup {
-
-        debugger = {
-          -- make these two params true to enable debug mode
-          enabled = false,
-          run_via_dap = false,
-          register_configurations = function(_)
-            require("dap").adapters.dart = {
-              type = "executable",
-              command = vim.fn.stdpath "data" .. "/mason/bin/dart-debug-adapter",
-              args = { "flutter" },
-            }
-
-            require("dap").configurations.dart = {
-              {
-                type = "dart",
-                request = "launch",
-                name = "Launch flutter",
-                dartSdkPath = "home/flutter/bin/cache/dart-sdk/",
-                flutterSdkPath = "home/flutter",
-                program = "${workspaceFolder}/lib/main.dart",
-                cwd = "${workspaceFolder}",
-              },
-            }
-          end,
-        },
-        dev_log = {
-          -- toggle it when you run without DAP
-          enabled = false,
-          open_cmd = "tabedit",
-        },
-        lsp = {
-          on_attach = require("lvim.lsp").common_on_attach,
-          capabilities = require("lvim.lsp").default_capabilities,
-        },
-      }
+      require "configs.flutter-tools"
     end,
   },
   {
@@ -63,33 +42,7 @@ return {
   {
     "tronikelis/conflict-marker.nvim",
     config = function()
-      require("conflict-marker").setup {
-        highlights = true,
-        on_attach = function(conflict)
-          local MID = "^=======$"
-
-          vim.keymap.set("n", "[x", function()
-            vim.cmd("?" .. MID)
-          end, { buffer = conflict.bufnr })
-
-          vim.keymap.set("n", "]x", function()
-            vim.cmd("/" .. MID)
-          end, { buffer = conflict.bufnr })
-
-          vim.keymap.set("n", "co", function()
-            conflict:choose_ours()
-          end)
-          vim.keymap.set("n", "ct", function()
-            conflict:choose_theirs()
-          end)
-          vim.keymap.set("n", "cb", function()
-            conflict:choose_both()
-          end)
-          vim.keymap.set("n", "cn", function()
-            conflict:choose_none()
-          end)
-        end,
-      }
+      require "configs.git-conflict-marker"
     end,
     lazy = false,
   },
@@ -141,6 +94,7 @@ return {
       require "configs.none-ls"
     end,
   },
+  { "neoclide/coc.nvim", branch = "release" },
   {
     "prettier/vim-prettier",
     run = "yarn install --frozen-lockfile --production",

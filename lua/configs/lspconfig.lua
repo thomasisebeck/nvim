@@ -6,13 +6,17 @@ local servers = {
   eslint = {},
   lua_ls = {},
   pyright = {},
+  ts_ls = {},
   cssls = {},
+  cmake_language_server = {},
   clangd = {
     cmd = {
       "clangd",
       "--clang-tidy",
       "--completion-style=detailed",
-      "--header-insertion=never",
+      "--header-insertion=iwyu",
+      "--all-scopes-completion",
+      "--background-index",
     },
   },
 }

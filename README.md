@@ -3,6 +3,10 @@
 - Support for C, C++, TS, JS, and tailwind
 - Added flutter support
 
+# Install for debug adapter
+
+sudo pacman -S lldb
+
 # Comments
 
 - TODO
