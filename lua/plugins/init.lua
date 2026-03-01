@@ -63,11 +63,6 @@ return {
     },
   },
   {
-    "Civitasv/cmake-tools.nvim",
-    ft = "cmake",
-    opts = {},
-  },
-  {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
     opts = {},

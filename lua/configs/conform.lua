@@ -4,6 +4,7 @@ local options = {
     cpp = { "clang-format" },
     html = { "prettierd" },
     css = { "prettierd" },
+    cmake = { "cmake_format" },
     ts = { "prettierd" },
   },
   format_on_save = {

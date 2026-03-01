@@ -8,7 +8,6 @@ local servers = {
   pyright = {},
   ts_ls = {},
   cssls = {},
-  cmake_language_server = {},
   clangd = {
     cmd = {
       "clangd",
