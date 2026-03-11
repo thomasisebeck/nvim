@@ -5,7 +5,19 @@ local servers = {
   tailwindcss = {},
   eslint = {},
   lua_ls = {},
-  pyright = {},
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = "workspace",
+        },
+        venvPath = ".",
+        venv = "venv",
+      },
+    },
+  },
   ts_ls = {},
   cssls = {},
   clangd = {
