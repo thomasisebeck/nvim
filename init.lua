@@ -35,3 +35,7 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Hide the command line when not in use
+ vim.opt.cmdheight = 0 
+

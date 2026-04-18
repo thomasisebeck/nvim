@@ -1,4 +1,18 @@
 return {
+{
+        'mg979/vim-visual-multi',
+        branch = 'master',
+        lazy = false,
+        init = function()
+            vim.g.VM_silent_exit = 1
+    
+            vim.g.VM_show_warnings = 0
+            vim.g.VM_maps = {
+            ['Find Under'] = '<C-n>',
+            ['Find Next'] = '<C-n>',
+        }
+        end,
+    },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",

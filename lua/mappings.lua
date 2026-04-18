@@ -8,6 +8,10 @@ map("n", "<leader>p", ":bp<CR>", { desc = "Go to the previous buffer" })
 map("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", { desc = "LSP Code Action", remap = true })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action", remap = true })
 
+-- This removes the existing mapping that was toggling your explorer
+vim.keymap.del("n", "<C-n>")
+
+
 local wk = require "which-key"
 
 wk.add {
