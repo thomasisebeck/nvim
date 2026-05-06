@@ -14,7 +14,7 @@ local servers = {
           diagnosticMode = "workspace",
         },
         venvPath = ".",
-        venv = "venv",
+        venv = ".venv",
       },
     },
   },
