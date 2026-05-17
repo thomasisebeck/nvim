@@ -2,7 +2,17 @@ require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
   vtsls = {},
-  tailwindcss = {},
+  tailwindcss = {
+    filetypes = { "html", "css", "javascriptreact", "typescriptreact", "vue", "svelte" },
+    root_markers = {
+      "package.json",
+      "tailwind.config.js",
+      "tailwind.config.ts",
+      "postcss.config.js",
+      "postcss.config.mjs",
+      ".git",
+    },
+  },
   eslint = {},
   lua_ls = {},
   pyright = {
