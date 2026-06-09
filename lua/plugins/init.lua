@@ -1,4 +1,14 @@
 return {
+  -- NB: requires nvim 0.12
+  {
+    "mrcjkb/rustaceanvim",
+    -- To avoid being surprised by breaking changes,
+    -- I recommend you set a version range
+    version = "^9",
+    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
+    -- No need for lazy.nvim to lazy-load it.
+    lazy = false,
+  },
   {
     "mg979/vim-visual-multi",
     branch = "master",

@@ -13,7 +13,7 @@ local servers = {
       ".git",
     },
   },
-  ["rust-analyzer"] = {},
+  -- rust installed using rustacenvim
   eslint = {},
   lua_ls = {},
   pyright = {

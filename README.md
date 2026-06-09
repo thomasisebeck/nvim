@@ -1,7 +1,6 @@
 # NVIM config
 
-- Support for C, C++, TS, JS, and tailwind
-- Added flutter support
+- You must have nvim 0.12 for the plugins to work
 
 # Install for debug adapter
 
@@ -44,4 +43,10 @@ Diagnostics:
       - readability-*
       - cppcoreguidelines-*
       - misc-*
+```
+
+# Rust support
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
