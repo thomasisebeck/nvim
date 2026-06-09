@@ -13,6 +13,7 @@ local servers = {
       ".git",
     },
   },
+  ["rust-analyzer"] = {},
   eslint = {},
   lua_ls = {},
   pyright = {
