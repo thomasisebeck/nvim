@@ -41,6 +41,20 @@ local servers = {
       "--background-index",
     },
   },
+  -- zig
+  zls = {
+    cmd = { "zls" },
+    filetypes = { "zig", "zir" },
+    root_markers = { "zls.json", "build.zig", ".git" },
+    settings = {
+      zls = {
+        -- Enable features like inlay hints if your LSP client supports them
+        enable_inlay_hints = true,
+        enable_snippets = true,
+        warn_style = true,
+      },
+    },
+  },
 }
 
 for name, opts in pairs(servers) do

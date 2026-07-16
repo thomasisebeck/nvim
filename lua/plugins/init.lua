@@ -24,6 +24,14 @@ return {
     end,
   },
   {
+    "ziglang/zig.vim",
+    init = function()
+      -- Disable format-on-save from zig.vim
+      -- we'll let the LSP handle it
+      vim.g.zig_fmt_autosave = 0
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     opts = require "configs.conform",
