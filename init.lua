@@ -1,6 +1,5 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
-
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
@@ -37,5 +36,4 @@ vim.schedule(function()
 end)
 
 -- Hide the command line when not in use
- vim.opt.cmdheight = 0 
-
+vim.opt.cmdheight = 0

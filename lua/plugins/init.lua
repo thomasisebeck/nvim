@@ -100,6 +100,7 @@ return {
     event = "InsertEnter",
     opts = {},
   },
+  { 'neovim/nvim-lspconfig' },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
