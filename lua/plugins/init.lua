@@ -1,14 +1,4 @@
 return {
-  -- NB: requires nvim 0.12
-  {
-    "mrcjkb/rustaceanvim",
-    -- To avoid being surprised by breaking changes,
-    -- I recommend you set a version range
-    version = "^9",
-    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
-    -- No need for lazy.nvim to lazy-load it.
-    lazy = false,
-  },
   {
     "mg979/vim-visual-multi",
     branch = "master",
@@ -21,6 +11,16 @@ return {
         ["Find Under"] = "<C-n>",
         ["Find Next"] = "<C-n>",
       }
+    end,
+  },
+  {
+    -- NB: need to run
+    -- rustup component add rust-analyzer
+    "mrcjkb/rustaceanvim",
+    version = "^9", -- Keeps you updated without breaking changes
+    lazy = false,
+    config = function()
+      require "configs.rustacenvim"
     end,
   },
   {
@@ -100,7 +100,7 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-  { 'neovim/nvim-lspconfig' },
+  { "neovim/nvim-lspconfig" },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -109,6 +109,8 @@ return {
         "lua",
         "html",
         "css",
+        "rust",
+        "toml",
         "javascript",
         "typescript",
         "tsx",

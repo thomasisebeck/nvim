@@ -6,6 +6,12 @@
 
 sudo pacman -S lldb
 
+# Install rust-analyzer 
+
+```
+rustup component add rust-analyzer
+```
+
 # Comments
 
 - TODO

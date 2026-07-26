@@ -1,6 +1,8 @@
-require("nvchad.configs.lspconfig").defaults()
+local lspconfig = require "nvchad.configs.lspconfig"
+lspconfig.defaults()
 
 local servers = {
+  -- lua ls set up with nvchad
   vtsls = {},
   tailwindcss = {
     filetypes = { "html", "css", "javascriptreact", "typescriptreact", "vue", "svelte" },
@@ -15,7 +17,6 @@ local servers = {
   },
   -- rust installed using rustacenvim
   eslint = {},
-  lua_ls = {},
   pyright = {
     settings = {
       python = {
@@ -53,13 +54,17 @@ local servers = {
         enable_inlay_hints = true,
         enable_snippets = true,
         warn_style = true,
-        enable_build_on_save = true
+        enable_build_on_save = true,
       },
     },
   },
 }
 
 for name, opts in pairs(servers) do
+  -- Safely inject NvChad's default capabilities and on_init into every server config
+  opts.capabilities = vim.tbl_deep_extend("force", lspconfig.capabilities, opts.capabilities or {})
+  opts.on_init = opts.on_init or lspconfig.on_init
+
   vim.lsp.config(name, opts)
   vim.lsp.enable(name)
 end
