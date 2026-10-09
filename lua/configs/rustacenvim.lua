@@ -15,6 +15,11 @@ vim.g.rustaceanvim = {
       ["rust-analyzer"] = {
         cargo = { allFeatures = true },
         procMacro = { enable = true },
+        check = {
+          command = "clippy",
+          -- Add the double-dash before passing clippy-specific flags
+          extraArgs = { "--", "--no-deps" },
+        },
       },
     },
   },

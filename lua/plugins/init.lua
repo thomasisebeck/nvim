@@ -102,6 +102,7 @@ return {
   },
   { "neovim/nvim-lspconfig" },
   {
+    -- see installed: :checkhealth nvim-treesitter
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -115,6 +116,11 @@ return {
         "typescript",
         "tsx",
         "python",
+      },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
       },
     },
   },

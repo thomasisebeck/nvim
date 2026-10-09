@@ -12,6 +12,20 @@ sudo pacman -S lldb
 rustup component add rust-analyzer
 ```
 
+# install others
+
+```
+sudo apt install luarocks
+sudo apt install nodejs npm
+sudo npm install -g tree-sitter-cli
+:TSInstall all
+```
+
+check parsers:
+```
+:checkhealth nvim-treesitter
+```
+
 # Comments
 
 - TODO
